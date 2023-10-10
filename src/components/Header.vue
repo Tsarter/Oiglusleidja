@@ -33,6 +33,7 @@
     position: relative;
     padding: 0;
     display:flex;
+    z-index: 1;
   }
   
   .logo img {
@@ -52,7 +53,7 @@
     position: absolute;
     width: 100vw;
     top: 0;
-    z-index: -1;
+    z-index: 0;
   }
   </style>
   

@@ -13,6 +13,7 @@ import LandingSection from './components/LandingSection.vue';
       <HelloWorld msg="You did it!" />
     </div> -->
     <Header />
+    <router-link to="/">Home</router-link>
     <LandingSection />
   </div>
 
