@@ -1,8 +1,7 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
 import Header from './components/Header.vue';
 import LandingSection from './components/LandingSection.vue';
+import { RouterLink, RouterView } from 'vue-router'
 </script>
 
 <template>
@@ -14,12 +13,9 @@ import LandingSection from './components/LandingSection.vue';
     </div> -->
     <Header />
     <router-link to="/">Home</router-link>
-    <LandingSection />
+    <!-- <LandingSection /> -->
   </div>
-
-  <main>
-    <!-- <TheWelcome /> -->
-  </main>
+  <RouterView />
 </template>
 
 <style scoped>

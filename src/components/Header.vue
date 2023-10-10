@@ -2,7 +2,9 @@
     <header class="header">
       <div class="logo">
         <!-- Add your logo image or SVG here -->
+        <router-link to="/">
         <img src="/assets/Logo.svg" alt="Logo" />
+      </router-link>
       </div>
       <div class="company-name">
         <!-- Add your company name here -->
@@ -33,7 +35,7 @@
     position: relative;
     padding: 0;
     display:flex;
-    z-index: 1;
+    z-index: 3;
   }
   
   .logo img {
@@ -53,7 +55,7 @@
     position: absolute;
     width: 100vw;
     top: 0;
-    z-index: 0;
+    z-index: 2;
   }
   </style>
   
