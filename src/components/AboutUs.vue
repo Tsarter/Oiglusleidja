@@ -7,21 +7,22 @@ import PriceTier from "@/components/PriceTier.vue";
   <div class="about-us-bg">
     <div class="vertical-div">
       <h1>How it works</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu metus ex. Curabitur vel ligula augue.
-
-        Nullam maximus tempor libero, ac auctor metus pellentesque eu. Nulla efficitur erat quis rutrum tempus.
-        In pulvinar ut dolor non placerat. Donec placerat sed odio tincidunt venenatis. Praesent ut iaculis magna. </p>
+      <p> We have trained our model on 1000+ laws on www.riigiteataja.ee​ <br>
+        1. Fetch XML of laws and extract the paragraphs ​<br>
+        2. Convert to AI embeddings​ <br>
+        3. Retrieve most close documents to the user query​ <br>
+        4. Feed the top documents to gpt-3.5 to generate the answer </p>
     </div>
 
     <div class="vertical-div">
       <h1>Pricing</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu metus ex. Curabitur vel ligula augue. </p>
+      <p>Free tier is suitable for most users, but we also offer a premium tier for professionals. </p>
       <PriceTier/>
     </div>
 
     <div class="vertical-div">
       <h1>About Us</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eu metus ex. Curabitur vel ligula augue. </p>
+      <p>This idea was hacked together during the Hackathon: Digital State Future Solutions. </p>
     </div>
   </div>
 </template>
