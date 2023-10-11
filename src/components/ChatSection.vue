@@ -10,39 +10,51 @@ import ChatInput from './ChatInput.vue';
                 <div v-else class="user-message">{{ message.text }}</div>
             </div>
         </div>
-        <ChatInput />
+        <div>
+        <h1>Chat Page</h1>
+        <p>Received message: {{ input }}</p>
+        <!-- <button @click="sendMessageToAPI">Send Message to API</button> -->
+    </div>
     </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-    data() {
-        return {
-            messages: [],
-            inputText: ''
-        }
-    },
-    methods: {
-        async sendMessage() {
-            if (!this.inputText) return;
-            this.messages.push({ id: Date.now(), text: this.inputText, isBot: false });
-            this.inputText = '';
-            try {
-                const response = await fetch('https://your-server-url.com/chat', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ message: this.inputText })
-                });
-                const data = await response.json();
-                this.messages.push({ id: Date.now(), text: data.message, isBot: true });
-            } catch (error) {
-                console.error(error);
-            }
-        }
+  data() {
+    return {
+      messages: [],
+      input: "",
+    };
+  },
+  created() {
+    // Access the query parameter from the URL
+    const messageFromQuery = this.$route.query.message;
+
+    if (messageFromQuery) {
+      // Append the user's message to the messages array
+      this.addUserMessage(messageFromQuery);
     }
-}
+  },
+  methods: {
+    addUserMessage(userMessage) {
+      this.input = userMessage;
+      this.sendMessageToAPI(userMessage);
+    },
+    sendMessageToAPI(userMessage) {
+      axios
+        .post("https://example.com/api/chat", { message: userMessage })
+        .then((response) => {
+          console.log(response.data);
+          this.messages.push({ text: response.data, isBot: true });
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -83,6 +95,22 @@ export default {
     padding: 10px;
 }
 
+.chat-input input {
+    flex: 1;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+}
 
-
+.chat-input button {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
 </style>

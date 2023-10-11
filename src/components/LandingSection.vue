@@ -19,8 +19,10 @@ import ChatInput from './ChatInput.vue';
     background-image: url("/assets/raba.jpeg");
     background-size: cover;
     background-position: center;
+    top: -2rem;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
     z-index: -1;
 
 }
