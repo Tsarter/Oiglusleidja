@@ -16,7 +16,7 @@ import ChatInput from './ChatInput.vue';
 .landingSectionImg {
     display: flex;
     justify-content: center;
-    background-image: url("/assets/raba.jpeg");
+    background-image: url("/assets/raba.webp");
     background-size: cover;
     background-position: center;
     top: 0rem;
