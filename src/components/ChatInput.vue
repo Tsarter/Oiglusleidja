@@ -20,7 +20,6 @@ export default {
   methods: {
     sendMessage() {
       // Navigate to the chat page with the message as a parameter
-
       this.$router.push("/chat?message=" + this.message);
     },
   },

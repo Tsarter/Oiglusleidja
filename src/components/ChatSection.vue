@@ -1,21 +1,32 @@
 <script setup>
 import ChatInput from './ChatInput.vue';
+import { NCard } from 'naive-ui'
 </script>
 
 <template>
-    <div class="chat-container">
-        <div class="chat-messages">
-            <div v-for="message in messages" :key="message.id" class="message">
-                <div v-if="message.isBot" class="bot-message">{{ message.text }}</div>
-                <div v-else class="user-message">{{ message.text }}</div>
-            </div>
+  <div class="chat-container">
+    <!-- <div class="chat-messages">
+      <div v-for="message in messages" :key="message.id" class="message">
+        <div v-if="message.isBot" class="bot-message">{{ message.paragraph }}</div>
+        <div v-else class="user-message">{{ message.text }}</div>
+      </div>
+    </div> -->
+    <div>
+      <h1>Chat Page</h1>
+      <p>Received message: {{ input }}</p>
+      <div class="api-response">
+        <h2>API Response:</h2>
+          <div v-for="responseItem in apiResponse" :key="responseItem.article_id">
+
+                    <n-card title="Law" size="small">
+                        {{ responseItem.paragraph }}
+                        <a :href="`https://www.riigiteataja.ee/en/eli/${responseItem.article_id}#${responseItem.paragraph_id}`" target="_blank">www.riigiteataja.ee</a>
+                    </n-card>
+
         </div>
-        <div>
-        <h1>Chat Page</h1>
-        <p>Received message: {{ input }}</p>
-        <!-- <button @click="sendMessageToAPI">Send Message to API</button> -->
+      </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script>
@@ -25,6 +36,7 @@ export default {
   data() {
     return {
       messages: [],
+      apiResponse: [],
       input: "",
     };
   },
@@ -43,11 +55,15 @@ export default {
       this.sendMessageToAPI(userMessage);
     },
     sendMessageToAPI(userMessage) {
+      const apiUrl = "http://13.48.162.201/query";
+      const requestBody = { query: userMessage };
+
       axios
-        .post("https://example.com/api/chat", { message: userMessage })
+        .post(apiUrl, requestBody)
         .then((response) => {
-          console.log(response.data);
-          this.messages.push({ text: response.data, isBot: true });
+          console.log(response);
+          // Assuming the API response contains a "response" field
+        this.apiResponse = response.data;
         })
         .catch((error) => {
           console.error(error);
@@ -62,6 +78,7 @@ export default {
     display: flex;
     flex-direction: column;
     height: 50vh;
+    padding: 5vw;
 }
 
 .chat-messages {
