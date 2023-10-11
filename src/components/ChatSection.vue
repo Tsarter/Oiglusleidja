@@ -17,7 +17,7 @@ import { NCard } from 'naive-ui'
           <div v-for="responseItem in apiResponse" :key="responseItem.article_id">
 
                     <n-card :title="`${responseItem.paragraph_title}`" size="small">
-                        {{ getTruncatedSummary(responseItem.paragraph, 120) }} <br>
+                        {{ getTruncatedSummary(responseItem.paragraph, 420) }} <br>
                         <a :href="`https://www.riigiteataja.ee/en/eli/${responseItem.article_id}#${responseItem.paragraph_id}`" target="_blank">www.riigiteataja.ee</a>
                     </n-card>
 

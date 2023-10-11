@@ -39,7 +39,6 @@ import ChatInput from './ChatInput.vue';
 #chat-input-wrapper {
     position: absolute;
     bottom: 40vh;
-    width: 100%;
     display: flex;
     justify-content: center;
 }

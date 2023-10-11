@@ -49,5 +49,8 @@ export default {
     border-radius: 10px;
     border: none;
     font-size: 16px;
+    width: 50vw;
+    max-width: 40rem;
+    min-width: 10rem;
 }
 </style>

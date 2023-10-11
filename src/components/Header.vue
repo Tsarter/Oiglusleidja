@@ -45,7 +45,9 @@
   }
   
   .logo img {
-    width: 200px; /* Adjust the width as needed */
+    width: 5vw; /* Adjust the width as needed */
+    min-width: 8rem;
+    max-width: 16rem;
     height: auto;
     
   }
@@ -53,7 +55,6 @@
   .company-name h1 {
     margin: 0;
     letter-spacing: 0.15em;
-    
   }
   
   .wave-container{
