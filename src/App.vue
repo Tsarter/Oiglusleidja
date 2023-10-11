@@ -12,20 +12,13 @@ import { RouterLink, RouterView } from 'vue-router'
       <HelloWorld msg="You did it!" />
     </div> -->
     <Header />
-    <router-link to="/">Home</router-link>
     <!-- <LandingSection /> -->
   </div>
   <RouterView />
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
+
 
 </style>

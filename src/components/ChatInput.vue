@@ -2,7 +2,7 @@
     
         <div class="chat-input">
             
-            <input v-model="message" @keyup.enter="sendMessage" placeholder="Type your message here..." />
+            <input v-model="message" @keyup.enter="sendMessage" placeholder="Ask me..." />
             
                 <button @click="sendMessage">Send</button>
                 
@@ -37,7 +37,7 @@ export default {
     padding: 10px;
     border-radius: 10px;
     border: none;
-    background-color: #007bff;
+    background-color: #0000F0;
     color: #fff;
     font-size: 16px;
     cursor: pointer;

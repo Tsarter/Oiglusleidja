@@ -3,7 +3,8 @@
       <div class="logo">
         <!-- Add your logo image or SVG here -->
         <router-link to="/">
-        <img src="/assets/Logo.svg" alt="Logo" />
+       <!--  <img src="/assets/Logo.svg" alt="Logo" /> -->
+        <img src="/assets/lawFinder.png" alt="Logo" />
       </router-link>
       </div>
       <div class="company-name">
@@ -22,7 +23,7 @@
   export default {
     data() {
       return {
-        companyName: "Õigusotsing",
+        companyName: "Õigusleidja",
       };
     },
   };
@@ -32,20 +33,27 @@
   .header {
     /* background-color: #007bff; */
     color: #fff;
-    position: relative;
+    position: absolute;
     padding: 0;
     display:flex;
+
+    align-items: center;
     z-index: 3;
+    padding-top: .5rem;
+    padding-left: .5rem;
+    gap: 1rem;
   }
   
   .logo img {
-    width: 50px; /* Adjust the width as needed */
+    width: 200px; /* Adjust the width as needed */
     height: auto;
+    
   }
   
   .company-name h1 {
-    font-size: 24px;
     margin: 0;
+    letter-spacing: 0.15em;
+    
   }
   
   .wave-container{

@@ -12,17 +12,20 @@ import { NCard } from 'naive-ui'
       </div>
     </div> -->
     <div>
-      <h1>Chat Page</h1>
-      <p>Received message: {{ input }}</p>
+      <h1>{{ input }} </h1>
       <div class="api-response">
-        <h2>API Response:</h2>
           <div v-for="responseItem in apiResponse" :key="responseItem.article_id">
 
-                    <n-card title="Law" size="small">
-                        {{ responseItem.paragraph }}
+                    <n-card title="" size="small">
+                        {{ responseItem.paragraph }} <br>
                         <a :href="`https://www.riigiteataja.ee/en/eli/${responseItem.article_id}#${responseItem.paragraph_id}`" target="_blank">www.riigiteataja.ee</a>
                     </n-card>
 
+        </div>
+        <div class="api-summary">
+            <n-card title="Summary" size="small">
+                {{ apiSummary }}
+            </n-card>
         </div>
       </div>
     </div>
@@ -37,7 +40,8 @@ export default {
     return {
       messages: [],
       apiResponse: [],
-      input: "",
+      input: "Loading..",
+      apiSummary: "Loading.. (might take up to 15sec)",
     };
   },
   created() {
@@ -55,7 +59,7 @@ export default {
       this.sendMessageToAPI(userMessage);
     },
     sendMessageToAPI(userMessage) {
-      const apiUrl = "http://13.48.162.201/query";
+      const apiUrl = "https://api.lawlocater.com/query";
       const requestBody = { query: userMessage };
 
       axios
@@ -64,12 +68,28 @@ export default {
           console.log(response);
           // Assuming the API response contains a "response" field
         this.apiResponse = response.data;
+        this.sendMessageToApiSummarise(userMessage);
         })
         .catch((error) => {
           console.error(error);
         });
     },
-  },
+    sendMessageToApiSummarise(userMessage) {
+      const apiUrl = "https://api.lawlocater.com/answer";
+      const requestBody = { paragraphs: apiResponse, query: userMessage };
+
+      axios
+        .post(apiUrl, requestBody)
+        .then((response) => {
+          console.log(response);
+          // Assuming the API response contains a "response" field
+        this.apiSummary = response.data;
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+  }
+    },
 };
 </script>
 
@@ -79,6 +99,7 @@ export default {
     flex-direction: column;
     height: 50vh;
     padding: 5vw;
+    padding-top: 12rem;
 }
 
 .chat-messages {
@@ -130,4 +151,15 @@ export default {
     font-size: 16px;
     cursor: pointer;
 }
+.api-response {
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+.api-response .n-card {
+    border-radius: .4rem;
+    max-width: 30vw;
+}
+
 </style>

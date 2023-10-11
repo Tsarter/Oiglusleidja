@@ -19,7 +19,7 @@ import ChatInput from './ChatInput.vue';
     background-image: url("/assets/raba.jpeg");
     background-size: cover;
     background-position: center;
-    top: -2rem;
+    top: 0rem;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -38,7 +38,7 @@ import ChatInput from './ChatInput.vue';
 }
 #chat-input-wrapper {
     position: absolute;
-    bottom: 6rem;
+    bottom: 40vh;
     width: 100%;
     display: flex;
     justify-content: center;
