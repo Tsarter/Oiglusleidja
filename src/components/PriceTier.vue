@@ -47,8 +47,8 @@ export default {
 }
 
 .price-plan {
-  width: 30vw;
-  height: 40vh;
+  width: 30%;
+  height: 40%;
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 5px;
@@ -85,6 +85,7 @@ a {
   font-family: "Roboto Light", sans-serif;
   text-align: center;
   letter-spacing: 0.12vw;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 p {
@@ -97,5 +98,17 @@ p {
   background-repeat: no-repeat;
   background-position: 0 2px; /* Adjust the position as needed */
   padding-left: 2vw;
+}
+
+@media screen and (max-width: 800px) {
+  .price-tier {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .price-plan {
+    width: 80%;
+    margin-bottom: 10%;
+  }
 }
 </style>
