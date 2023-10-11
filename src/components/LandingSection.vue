@@ -1,6 +1,7 @@
 
 <script setup>
 import ChatInput from './ChatInput.vue';
+import AboutUs from "@/components/AboutUs.vue";
 </script>
 <template>
     <div class="landingSectionImg">
@@ -8,8 +9,10 @@ import ChatInput from './ChatInput.vue';
         <div id="chat-input-wrapper">
             <ChatInput />
         </div>
-        
     </div>
+  <div>
+    <AboutUs/>
+  </div>
 </template>
 
 <style>
