@@ -11,23 +11,23 @@ import { NCard } from 'naive-ui'
         <div v-else class="user-message">{{ message.text }}</div>
       </div>
     </div> -->
-    <div>
       <h1>{{ input }} </h1>
+      <div class="response-wrapper">
       <div class="api-response">
           <div v-for="responseItem in apiResponse" :key="responseItem.article_id">
 
-                    <n-card title="" size="small">
-                        {{ responseItem.paragraph }} <br>
+                    <n-card :title="`${responseItem.paragraph_title}`" size="small">
+                        {{ getTruncatedSummary(responseItem.paragraph, 120) }} <br>
                         <a :href="`https://www.riigiteataja.ee/en/eli/${responseItem.article_id}#${responseItem.paragraph_id}`" target="_blank">www.riigiteataja.ee</a>
                     </n-card>
 
         </div>
+    </div>
         <div class="api-summary">
             <n-card title="Summary" size="small">
                 {{ apiSummary }}
             </n-card>
         </div>
-      </div>
     </div>
   </div>
 </template>
@@ -68,27 +68,37 @@ export default {
           console.log(response);
           // Assuming the API response contains a "response" field
         this.apiResponse = response.data;
-        this.sendMessageToApiSummarise(userMessage);
+        this.sendMessageToApiSummarise(response.data, userMessage);
         })
         .catch((error) => {
           console.error(error);
         });
     },
-    sendMessageToApiSummarise(userMessage) {
+    sendMessageToApiSummarise(apiResponse, userMessage) {
+    const paragraphs2 = apiResponse.map((item) => item.paragraph);
       const apiUrl = "https://api.lawlocater.com/answer";
-      const requestBody = { paragraphs: apiResponse, query: userMessage };
+      const requestBody = { paragraphs: paragraphs2, query: userMessage };
+      console.log("requestBody", requestBody)
 
       axios
         .post(apiUrl, requestBody)
         .then((response) => {
           console.log(response);
           // Assuming the API response contains a "response" field
-        this.apiSummary = response.data;
+        this.apiSummary = response.data.answer;
         })
         .catch((error) => {
           console.error(error);
         });
-  }
+    },
+    getTruncatedSummary(text, maxLength) {
+      if (text.length <= maxLength) {
+        return text;
+      } else {
+        // Truncate the text and add ellipsis
+        return text.slice(0, maxLength) + "…";
+      }
+    },
     },
 };
 </script>
@@ -155,11 +165,16 @@ export default {
     padding-top: 2rem;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 1rem;
+    padding-bottom: 2rem;
 }
 .api-response .n-card {
     border-radius: .4rem;
-    max-width: 30vw;
+    max-width: 25vw;
+    min-width: 10rem;
 }
-
+.api-summary {
+    max-width: 40rem;
+}
 </style>
