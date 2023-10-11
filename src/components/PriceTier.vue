@@ -28,7 +28,7 @@ export default {
         {
           id: 2,
           name: 'Premium',
-          price: '4,99€',
+          price: '49,99€',
           price_small_text: 'per month per user',
           features: ['Unlimited questions', 'personalised answers'],
         },
