@@ -7,7 +7,7 @@ import PriceTier from "@/components/PriceTier.vue";
   <div class="about-us-bg">
     <div class="vertical-div">
       <h1>How it works</h1>
-      <p> We have trained our model on 1000+ laws on www.riigiteataja.ee​ <br>
+      <p> We have trained our model on 50+ acts on www.riigiteataja.ee​ <br>
         1. Fetch XML of laws and extract the paragraphs ​<br>
         2. Convert to AI embeddings​ <br>
         3. Retrieve most close documents to the user query​ <br>
